@@ -2,8 +2,8 @@ require 'omniauth-oauth2'
 
 module OmniAuth
   module Strategies
-    class MicrosoftGraph < OmniAuth::Strategies::OAuth2
-      option :name, :microsoft_graph
+    class MicrosoftOnedrive < OmniAuth::Strategies::OAuth2
+      option :name, :microsoft_onedrive
 
       option :client_options, {
         site:          'https://login.microsoftonline.com/common/oauth2/authorize',
