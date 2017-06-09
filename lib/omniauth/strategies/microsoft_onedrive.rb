@@ -16,7 +16,8 @@ module OmniAuth
         options.client_options.authorize_url = "#{BASE_MICROSOFT_GRAPH_URL}/#{tenant_id}/oauth2/authorize"
         options.client_options.token_url = "#{BASE_MICROSOFT_GRAPH_URL}/#{tenant_id}/oauth2/token"
         options.client_options.site = "#{BASE_MICROSOFT_GRAPH_URL}/#{tenant_id}/oauth2/authorize"
-        
+        puts "**************"
+        puts tenant_id
         super
       end
 
