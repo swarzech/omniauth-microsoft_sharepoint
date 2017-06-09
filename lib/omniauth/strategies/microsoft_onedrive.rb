@@ -3,26 +3,18 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class MicrosoftOnedrive < OmniAuth::Strategies::OAuth2
-      BASE_MICROSOFT_GRAPH_URL = 'https://login.microsoftonline.com'
-
       option :name, :microsoft_onedrive
 
-      def client
-        if options.tenant_id
-          tenant_id = options.tenant_id
-        else
-          tenant_id = 'common'
-        end
-        options.client_options.authorize_url = "#{BASE_MICROSOFT_GRAPH_URL}/#{tenant_id}/oauth2/authorize"
-        options.client_options.token_url = "#{BASE_MICROSOFT_GRAPH_URL}/#{tenant_id}/oauth2/token"
-        options.client_options.site = "#{BASE_MICROSOFT_GRAPH_URL}/#{tenant_id}/oauth2/authorize"
-        super
-      end
+      option :client_options, {
+        site:          'https://login.microsoftonline.com/common/oauth2/authorize',
+        token_url:     'https://login.microsoftonline.com/common/oauth2/token',
+        authorize_url: 'https://login.microsoftonline.com/common/oauth2/authorize'
+      }
 
       option :authorize_params, {
         resource: 'https://graph.microsoft.com/'
       }
-      
+
       option :token_params, {
         resource: 'https://graph.microsoft.com/'        
       }
@@ -38,7 +30,7 @@ module OmniAuth
           'nickname' => raw_info["displayName"],
         }
       end
-
+      
       extra do
         {
           'raw_info' => raw_info,
