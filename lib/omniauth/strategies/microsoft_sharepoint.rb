@@ -2,10 +2,10 @@ require 'omniauth-oauth2'
 
 module OmniAuth
   module Strategies
-    class MicrosoftOnedrive < OmniAuth::Strategies::OAuth2
+    class MicrosoftSharepoint < OmniAuth::Strategies::OAuth2
       BASE_MICROSOFT_GRAPH_URL = 'https://login.microsoftonline.com'
 
-      option :name, :microsoft_onedrive
+      option :name, :microsoft_sharepoint
 
       def client
         if options.tenant_id
@@ -22,7 +22,7 @@ module OmniAuth
       option :authorize_params, {
         resource: 'https://graph.microsoft.com/'
       }
-      
+
       option :token_params, {
         resource: 'https://graph.microsoft.com/'
       }
